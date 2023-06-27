@@ -1,0 +1,1 @@
+# snps-to-2dcnn-converter
