@@ -7,14 +7,11 @@
 - Predict drug resistance in E. coli using the same methodology
 
 **Dataset**
+    - Gisssen dataset
+        - cip_ctx_ctz_gen_multi_data.csv contains the strains and their respective single nucleotide polymorphisms. Number of features: 60937
+        - cip_ctx_ctz_gen_pheno.csv contains the drug resistance of each strains. These drugs are ciprofloxacin, cefotaxime, ceftazidime and gentamicin. Number of features: 4
 
-Unlabeled: The original dataset is 1GB in size. I have created 10 sample datasets using a splitter. The first sample is available as "core_gene_alignment.aln.partaa".
+`  
 
-Original Dataset Name: Core_gene_alignment.aln. (To be published in the cloud soon)
+ 
 
-`` The script(spliter.sh) is designed to split the dataset into smaller parts due to the original dataset exceeding the maximum storage capacity.``
-
-```bash
-chmod +x spliter.sh
-./spliter.sh
-```
