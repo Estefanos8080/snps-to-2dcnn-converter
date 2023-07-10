@@ -1,4 +1,6 @@
 import pandas as pd
+import matplotlib.pyplot as plt
+import plotly.graph_objects as go
 
 class Preprocessing:
     def __init__(self, file_path):
@@ -24,23 +26,49 @@ class Preprocessing:
                 missing_values += 1
         print("Number of missing Snp's: ", missing_values)
 
-    def get_strain_name_and_snps(self):
-        # Get the strain name from the first element in the first row
-        strain_name = self.df.iloc[0, 0]
-        print("Strain Name:", strain_name)
+    # EDA: get the coloum of the isolate name and the drug response
+    def create_data_frame_by_drug_name(self):
+    # get the dataframe
+        drug_response = self.df[['prename', 'CIP', 'CTX', 'CTZ', 'GEN']]
+        # count the how many isolates are resistant to the drug where 1 stands for resistant
+        CIP_number_of_resistance = drug_response[drug_response['CIP'] == 1].count()['CIP']
+        CTX_number_of_resistance = drug_response[drug_response['CTX'] == 1].count()['CTX']
+        CTZ_number_of_resistance = drug_response[drug_response['CTZ'] == 1].count()['CTZ']
+        GEN_number_of_resistance = drug_response[drug_response['GEN'] == 1].count()['GEN']
+        # create a dict with the drug name and the number of resistance
+        drug_resistance = {'CIP': CIP_number_of_resistance, 'CTX': CTX_number_of_resistance, 'CTZ': CTZ_number_of_resistance, 'GEN': GEN_number_of_resistance}
 
-        # Get the SNPs associated with the strain in the same column
-        snps = self.df[self.df.columns[0]].values
-        print("SNPs:")
-        print(snps)
+        # create a bar chart
+        drugs = list(drug_resistance.keys())
+        resistance_counts = list(drug_resistance.values())
 
+        plt.bar(drugs, resistance_counts, align='center')
+        plt.xlabel('Drug')
+        plt.ylabel('Resistance Count')
+        plt.show()
 
+    
+    def create_sunburst_visualization(self):
+    # Group the data by drug and count the number of resistance
+        drug_counts = self.df[['prename', 'CIP', 'CTX', 'CTZ', 'GEN']].sum()
+        
+        # Create a dataframe with drug names and counts
+        df_drug_counts = pd.DataFrame({'Drug': drug_counts.index, 'Count': drug_counts.values})
+        
+        # Create the sunburst visualization
+        fig = go.Figure(go.Sunburst(labels=df_drug_counts['Drug'], parents=[''] * len(df_drug_counts), values=df_drug_counts['Count']))
+        fig.update_layout(margin=dict(t=0, l=0, r=0, b=0))
+        fig.show()
 # the instance of the Preprocessing class
 # path needs to be changed to the location of the dataset of the working machine
 prep = Preprocessing('/Users/estefanosk/Desktop/SummerProject/snps-to-2dcnn-converter/Giessen_Dataset/cip_ctx_ctz_gen_multi_data.csv')
 
+# location of the drug response to each isolate
+drug_reposne = Preprocessing('/Users/estefanosk/Desktop/SummerProject/snps-to-2dcnn-converter/Giessen_Dataset/cip_ctx_ctz_gen_pheno.csv')
+
 # calling the methods
-prep.get_dataframe()
-prep.count_number_of_features()
-prep.count_number_of_rows()
-prep.get_strain_name_and_snps()
+# prep.get_dataframe()
+# prep.count_number_of_features()
+# prep.count_number_of_rows()
+# drug_reposne.create_data_frame_by_drug_name()
+drug_reposne.create_sunburst_visualization()

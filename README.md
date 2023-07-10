@@ -17,3 +17,6 @@
         `` The data are encoded as follows: 0 = Susceptible, 1 = Resistant ``  
  
 
+***Install the required packages***
+    
+     pip install -r requirements.txt
