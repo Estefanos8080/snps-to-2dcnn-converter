@@ -2,20 +2,30 @@
 
 **Description**
 
-- Convert SNPs into 1DCNN
+- The primary goal of this project is to convert sequential data into 2D images with 3 channels and use the images to train a CNN model.
+    * The sequential data is the single nucleotide polymorphisms (SNPs) of the strains.
+    * The 2d images are the SNPs of the strains in a 3d matrix format[w,h,c].
+    * The CNN model is used to predict the drug resistance of the strains. And the model was built from scratch.
 
 **Dataset**
 
-- Gisssen dataset:  
-
-    - cip_ctx_ctz_gen_multi_data.csv contains the strains and their respective single nucleotide polymorphisms. Number of features: 60937
-    
-        `` The data are encoded as follows: 0 = Null, 1 = A, 2 = C, 3 = G, 4 = T ``
-    
-    - cip_ctx_ctz_gen_pheno.csv contains the drug resistance of each strains. These drugs are ciprofloxacin, cefotaxime, ceftazidime and gentamicin. Number of features: 4
-
+- Under the Final dataset. We have the follwing features
+    * prename: This is the isolate name.
+    * CIP: This is the isolate's response to the drug ciprofloxacin.
+    * CTX: This is the isolate's response to the drug cefotaxime.
+    * CTZ: This is the isolate's response to the drug ceftazidime
+    * GEN: This is the isolate's response to the drug gentamicin.
+    * Image: This is the isolate's genetic makeup, represented as an 2D image.
+        
         `` The data are encoded as follows: 0 = Susceptible, 1 = Resistant ``  
  
+ ***Results***
+- Learning curve of the model
+        ![alt text](Result/LR.png)
+- Confusion matrix of the model
+    ![alt text](Result/TP_TN_for_two_class_0_&_1.png)
+- Prediction on the test set
+    ![alt text](Result/Prediction_on_test_set.png)
 
 ***Install the required packages***
     
