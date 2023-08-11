@@ -21,7 +21,7 @@
  
  ***Results***
 - Learning curve of the model
-        ![alt text](Result/LR.png)
+    ![alt text](Result/LR.png)
 - Confusion matrix of the model
     ![alt text](Result/TP_TN_for_two_class_0_&_1.png)
 - Prediction on the test set
