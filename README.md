@@ -2,19 +2,31 @@
 
 **Description**
 
-- Convert SNPs into 2DCNN
-- Understand genotype-phenotype relationships using SNP conversion
-- Predict drug resistance in E. coli using the same methodology
+- The primary goal of this project is to convert sequential data into 2D images with 3 channels and use the images to train a CNN model.
+    * The sequential data is the single nucleotide polymorphisms (SNPs) of the strains.
+    * The 2d images are the SNPs of the strains in a 3d matrix format[w,h,c].
+    * The CNN model is used to predict the drug resistance of the strains. And the model was built from scratch.
 
 **Dataset**
 
-Unlabeled: The original dataset is 1GB in size. I have created 10 sample datasets using a splitter. The first sample is available as "core_gene_alignment.aln.partaa".
+- Under the Final dataset. We have the follwing features
+    * prename: This is the isolate name.
+    * CIP: This is the isolate's response to the drug ciprofloxacin.
+    * CTX: This is the isolate's response to the drug cefotaxime.
+    * CTZ: This is the isolate's response to the drug ceftazidime
+    * GEN: This is the isolate's response to the drug gentamicin.
+    * Image: This is the isolate's genetic makeup, represented as an 2D image.
+        
+        `` The data are encoded as follows: 0 = Susceptible, 1 = Resistant ``  
+ 
+ ***Results***
+- Learning curve of the model
+    ![alt text](Result/LR.png)
+- Confusion matrix of the model
+    ![alt text](Result/TP_TN_for_two_class_0_&_1.png)
+- Prediction on the test set
+    ![alt text](Result/Prediction_on_test_set.png)
 
-Original Dataset Name: Core_gene_alignment.aln. (To be published in the cloud soon)
-
-`` The script(spliter.sh) is designed to split the dataset into smaller parts due to the original dataset exceeding the maximum storage capacity.``
-
-```bash
-chmod +x spliter.sh
-./spliter.sh
-```
+***Install the required packages***
+    
+     pip install -r requirements.txt
