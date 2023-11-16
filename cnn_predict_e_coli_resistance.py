@@ -65,13 +65,13 @@ from sklearn.model_selection import train_test_split
 from google.colab import drive
 drive.mount('/content/drive')
 
-giessen_orig = pd.read_csv("/content/drive/MyDrive/Colab Notebooks/Dataset/cip_ctx_ctz_gen_multi_data.csv")
+giessen_orig = pd.read_csv("https://raw.githubusercontent.com/Estefanos8080/snps-to-2dcnn-converter/main/Giessen_Dataset/cip_ctx_ctz_gen_multi_data.csv")
 
 giessen_orig.head()
 
 """### The Drug column will contain the list of drugs, and the Resistance column will contain the list of resistance values. The resistance values will be encoded as 1 for resistance and 0 for susceptibility."""
 
-giessen = pd.read_csv("/content/drive/MyDrive/Colab Notebooks/Dataset/cip_ctx_ctz_gen_pheno.csv")
+giessen = pd.read_csv("https://raw.githubusercontent.com/Estefanos8080/snps-to-2dcnn-converter/main/Giessen_Dataset/cip_ctx_ctz_gen_pheno.csv")
 giessen.head()
 
 """### merge the dataframes"""
