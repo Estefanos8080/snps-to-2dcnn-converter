@@ -19,13 +19,6 @@
         
         `` The data are encoded as follows: 0 = Susceptible, 1 = Resistant ``  
  
- ***Results***
-- Learning curve of the model
-    ![alt text](Result/LR.png)
-- Confusion matrix of the model
-    ![alt text](Result/TP_TN_for_two_class_0_&_1.png)
-- Prediction on the test set
-    ![alt text](Result/Prediction_on_test_set.png)
 
 ***Install the required packages***
     
