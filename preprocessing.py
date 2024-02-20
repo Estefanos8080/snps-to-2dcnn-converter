@@ -61,10 +61,10 @@ class Preprocessing:
         fig.show()
 # the instance of the Preprocessing class
 # path needs to be changed to the location of the dataset of the working machine
-prep = Preprocessing('/Users/estefanosk/Desktop/SummerProject/snps-to-2dcnn-converter/Giessen_Dataset/cip_ctx_ctz_gen_multi_data.csv')
+prep = Preprocessing('')
 
 # location of the drug response to each isolate
-drug_reposne = Preprocessing('/Users/estefanosk/Desktop/SummerProject/snps-to-2dcnn-converter/Giessen_Dataset/cip_ctx_ctz_gen_pheno.csv')
+drug_reposne = Preprocessing('')
 
 # calling the methods
 # prep.get_dataframe()
